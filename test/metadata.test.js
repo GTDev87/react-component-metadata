@@ -299,6 +299,18 @@ describe('parsing Components', () => {
     })
   })
 
+  it('should handle parsed babel', () => {
+    parseFixture('parsedBabel').should.eql({
+      AssignedComponent: {
+        desc: 'Description of my Component',
+        props: propMetaData,
+        methods: {},
+        composes: []
+      }
+    })
+  })
+
+
   // it('should parse method data', () => {
   //   parseFixture('methods').should.eql({
   //     // ES6Component: {
