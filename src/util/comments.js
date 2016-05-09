@@ -14,7 +14,7 @@ var doc = module.exports = {
     if (parent.leadingComments || parent.trailingComments)
       return parent
 
-    return visitor.parentPath.parentPath.node
+    return (visitor.parentPath && visitor.parentPath.parentPath) ? visitor.parentPath.parentPath.node : {}
   },
 
   parseCommentBlock(node) {

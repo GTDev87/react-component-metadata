@@ -300,16 +300,45 @@ describe('parsing Components', () => {
   })
 
   it('should handle parsed babel', () => {
-    parseFixture('parsedBabel').should.eql({
-      AssignedComponent: {
-        desc: 'Description of my Component',
-        props: propMetaData,
+    // console.log("parseFixture('parsedBabel') = %j", parseFixture('parsedBabel'));
+    parseFixture('parsedBabelMenu').should.eql({
+      Menu: {
+        props: {
+          className: {
+            type: { name: "string" },
+            required: false,
+            desc: "Passed down class name"
+          },
+          children: {
+            type: {
+               name: "array",
+               value: { name: "objectOf" }
+            },
+            required: true,
+            desc: ""
+          },
+          selectedValues: {
+            type: { name: "array" },
+            required: false,
+            desc: ""
+          },
+          selectedValue: {
+            type: { name: "any" },
+            required: false,
+            desc: "The currently selected value"
+          },
+          onItemClick: {
+            type: { name: "func" },
+            required: false,
+            desc: ""
+          }
+        },
+        composes: [],
         methods: {},
-        composes: []
+        desc: "Description of my Component"
       }
     })
   })
-
 
   // it('should parse method data', () => {
   //   parseFixture('methods').should.eql({

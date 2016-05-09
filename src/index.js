@@ -1,6 +1,7 @@
 import * as babylon from 'babylon';
 import traverse from 'babel-traverse';
 import docs from './util/comments'
+var _ = require("lodash");
 
 function metadata(file, opts = {}) {
   var state = {
@@ -12,6 +13,8 @@ function metadata(file, opts = {}) {
   var visitor = {
 
     AssignmentExpression: require('./assignment-visitor')(state, opts),
+
+    Function: require('./function-visitor')(state, opts),
 
     Class: require('./class-visitor')(state, opts),
 
@@ -44,7 +47,13 @@ function metadata(file, opts = {}) {
 
   traverse(ast, visitor)
 
-  return state.result
+  const res = _.chain(state.result)
+    .pairs()
+    .filter(pair => !_.isEqual(pair[1].props, {}))
+    .object()
+    .value();
+
+  return res
 }
 
 metadata.parseDoclets = docs.getDoclets

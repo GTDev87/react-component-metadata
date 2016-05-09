@@ -28,11 +28,14 @@ var _MenuItem = require('./MenuItem');
 
 var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
-require('./AssignedComponent.scss');
+require('./Menu.scss');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var AssignedComponent = function AssignedComponent(props) {
+/**
+ * Description of my Component
+ */
+var Menu = function Menu(props) {
   var onItemClick = props.onItemClick;
   var className = props.className;
   var children = props.children;
@@ -47,7 +50,7 @@ var AssignedComponent = function AssignedComponent(props) {
 
   return _react2.default.createElement(
     'ul',
-    (0, _extends3.default)({}, props, { className: (0, _classnames2.default)('AssignedComponent', className) }),
+    (0, _extends3.default)({}, props, { className: (0, _classnames2.default)('Menu', className) }),
     _react.Children.toArray(children).map(function (item) {
       var value = (0, _typeof3.default)(item.props.value) === 'object' ? (0, _stringify2.default)(item.props.value) : item.props.value;
 
@@ -60,63 +63,22 @@ var AssignedComponent = function AssignedComponent(props) {
   );
 };
 
-AssignedComponent.propTypes = {
+Menu.propTypes = {
   /**
-   * An object hash of field errors for the form.
+   * Passed down class name
    */
-  objProp: React.PropTypes.object,
-
-  reqProp: React.PropTypes.object.isRequired,
-
+  className: _react.PropTypes.string,
+  // the child properties
+  children: _react.PropTypes.arrayOf(_react.PropTypes.objectOf(_MenuItem2.default)).isRequired,
+  selectedValues: _react.PropTypes.array,
   /**
-   * Callback **that** is called when a validation error occurs.
+   * The currently selected value
    */
-  funcProp:   React.PropTypes.func,
-
-  stringProp: React.PropTypes.string,
-
-  boolProp:   React.PropTypes.bool,
-
-  'aria-property': React.PropTypes.string,
-
-  enumProp:   React.PropTypes.oneOf([true, 'john', 5]),
-
-  otherProp:  React.PropTypes.instanceOf(Message),
-
-  shapeProp:  React.PropTypes.shape({
-                setter: React.PropTypes.func,
-                name: React.PropTypes.string
-              }),
-
-  unionProp: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.string
-  ]),
-
-  reqUnionProp: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.string
-  ]).isRequired,
-
-  customProp(props, name, componentName) {
-    return React.PropTypes.any.isRequired(props, name, componentName)	
-  },
-
-  customIdentifier: someValidator,
-
-  customCallExpression: someValidator()
+  selectedValue: _react.PropTypes.any,
+  // the item clicked
+  onItemClick: _react.PropTypes.func
 };
 
-AssignedComponent.defaultProps = {
-  'aria-property': 'aria-value',
-  stringProp: 'form',
-  boolProp: true,
-  funcProp: (path, model) => getter(path)(model),
-  shapeProp: { setter: ()=>{}, name: 'John' }
-}
+Menu.MenuItem = _MenuItem2.default;
 
-AssignedComponent.MenuItem = _MenuItem2.default;
-
-exports.default = AssignedComponent;
-
-
+exports.default = Menu;
