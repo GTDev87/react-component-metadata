@@ -299,7 +299,7 @@ describe('parsing Components', () => {
     })
   })
 
-  it('should handle parsed babel', () => {
+  it('should handle parsed babel function', () => {
     // console.log("parseFixture('parsedBabel') = %j", parseFixture('parsedBabel'));
     parseFixture('parsedBabelMenu').should.eql({
       Menu: {
@@ -338,6 +338,14 @@ describe('parsing Components', () => {
         desc: "Description of my Component"
       }
     })
+  })
+
+  it('should handle parsed babel class', () => {
+    // console.log("parseFixture('parsedBabel') = %j", parseFixture('parsedBabel'));
+    parseFixture('parsedBabelTooltip').should.eql({
+      Tooltip: {
+      }
+    });
   })
 
   // it('should parse method data', () => {
