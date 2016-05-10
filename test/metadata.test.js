@@ -344,6 +344,46 @@ describe('parsing Components', () => {
     // console.log("parseFixture('parsedBabel') = %j", parseFixture('parsedBabel'));
     parseFixture('parsedBabelTooltip').should.eql({
       Tooltip: {
+        composes: [],
+        desc: "Tooltip Thing",
+        methods: {},
+        props: {
+          className: {
+            desc: "",
+            required: false,
+            type: {
+              name: "string"
+            }
+          },
+          description: {
+            desc: "",
+            required: true,
+            type: {
+              name: "string"
+            }
+          },
+          footer: {
+            desc: "",
+            required: false,
+            type: {
+              name: "node"
+            }
+          },
+          header: {
+            desc: "",
+            required: false,
+            type: {
+              name: "node"
+            }
+          },
+          title: {
+            desc: "",
+            required: false,
+            type: {
+              name: "string"
+            }
+          }
+        }
       }
     });
   })

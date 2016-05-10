@@ -40,6 +40,9 @@ require('./Tooltip.scss');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Tooltip Thing
+ */
 var Tooltip = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(Tooltip, _Component);
 
